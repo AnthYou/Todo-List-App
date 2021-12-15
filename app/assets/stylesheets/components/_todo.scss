@@ -5,9 +5,9 @@
 
   .todo {
     position: relative;
-    background-color: $yellow;
+    background-color: $white;
     border-radius: $border-radius;
-    color: $white;
+    color: $gray;
     padding: 16px;
 
     h3 {
@@ -37,7 +37,7 @@
   right: 15px;
 
   a {
-    color: $white;
+    color: $gray;
   }
   
   .toggle_checkbox i {

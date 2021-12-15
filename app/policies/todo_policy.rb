@@ -6,6 +6,18 @@ class TodoPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.user == user
+  end
+  
+  def check?
+    record.user == user
+  end
+  
+  def up?
+    record.user == user
+  end
+  
+  def down?
+    record.user == user
   end
 end

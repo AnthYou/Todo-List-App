@@ -18,6 +18,21 @@ class TodosController < ApplicationController
     authorize @todo
   end
 
+  def check
+    @todo = Todo.find(params[:todo_id])
+    @todo.checked? ? @todo.unchecked! : @todo.checked!
+
+    if @todo.save
+      flash[:success] = "Updated successfully"
+      redirect_to todos_path(anchor: "todo-#{@todo.id}")
+    else
+      flash[:alert] = "An error has occured, please try again."
+      render 'todos/index'
+    end
+
+    authorize @todo
+  end
+
   private
 
   def todo_params
