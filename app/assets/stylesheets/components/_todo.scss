@@ -4,6 +4,7 @@
   grid-gap: 16px;
 
   .todo {
+    position: relative;
     background-color: $yellow;
     border-radius: $border-radius;
     color: $white;
@@ -22,5 +23,21 @@
     p {
       font-size: 14px;
     }
+
   }
+}
+
+.call_to_actions {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  top: 15px;
+  right: 15px;
+}
+
+.toggle_position {
+  display: flex;
+  flex-direction: column;
 }

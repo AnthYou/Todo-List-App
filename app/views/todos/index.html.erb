@@ -9,6 +9,29 @@
         <h3><%= todo.title %></h3>
         <p><%= todo.description %></p>
         <span>Due date: <%= todo.due_date.strftime("%A, %b %d") %></span>
+        <span>Status: <%= todo.status %></span>
+        <span>Position: <%= todo.position %></span>
+        <div class="call_to_actions">
+          <div class="toggle_checkbox">  
+            <% if todo.checked? %>
+              <%= link_to "#" do %>
+                <i class="fas fa-check-square"></i>
+              <% end %>
+            <% else %>
+              <%= link_to "#" do %>
+                <i class="far fa-square"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="toggle_position">
+            <%= link_to "#" do %>
+              <i class="fas fa-sort-up"></i>
+            <% end %>
+            <%= link_to "#" do %>
+              <i class="fas fa-sort-down"></i>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>
