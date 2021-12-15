@@ -21,14 +21,40 @@ class TodosController < ApplicationController
   def check
     @todo = Todo.find(params[:todo_id])
     @todo.checked? ? @todo.unchecked! : @todo.checked!
+    redirect_to todos_path(anchor: "todo-#{@todo.id}")
 
-    if @todo.save
-      flash[:success] = "Updated successfully"
-      redirect_to todos_path(anchor: "todo-#{@todo.id}")
-    else
-      flash[:alert] = "An error has occured, please try again."
-      render 'todos/index'
+    authorize @todo
+  end
+
+  def up 
+    @todo = Todo.find(params[:todo_id])
+
+    if @todo.position.positive?
+      todo_above = Todo.find_by(position: @todo.position - 1)
+      todo_above.position += 1
+      todo_above.save
+      @todo.position -= 1
+      @todo.save
+
     end
+
+    redirect_to todos_path(anchor: "todo-#{@todo.id}")
+
+    authorize @todo
+  end
+
+  def down
+    @todo = Todo.find(params[:todo_id])
+
+    if @todo.position < (current_user.todos.count - 1)
+      todo_below = Todo.find_by(position: @todo.position + 1)
+      todo_below.position -= 1
+      todo_below.save
+      @todo.position += 1
+      @todo.save
+    end
+
+    redirect_to todos_path(anchor: "todo-#{@todo.id}")
 
     authorize @todo
   end
