@@ -12,7 +12,7 @@ class TodosController < ApplicationController
       flash[:success] = "Added successfully"
       redirect_to todos_path(anchor: "todo-#{@todo.id}")
     else
-      render 'todos/index'
+      render 'todos/index', locals: { parameter: @todos = policy_scope(Todo) }
     end
 
     authorize @todo
