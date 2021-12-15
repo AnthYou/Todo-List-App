@@ -35,9 +35,18 @@
   gap: 16px;
   top: 15px;
   right: 15px;
+
+  a {
+    color: $white;
+  }
+  
+  .toggle_checkbox i {
+    font-size: 24px;
+  }
+
+  .toggle_position {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.toggle_position {
-  display: flex;
-  flex-direction: column;
-}
