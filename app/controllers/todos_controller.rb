@@ -26,7 +26,7 @@ class TodosController < ApplicationController
     authorize @todo
   end
 
-  def up 
+  def up
     @todo = Todo.find(params[:todo_id])
 
     if @todo.position.positive?
@@ -35,11 +35,9 @@ class TodosController < ApplicationController
       todo_above.save
       @todo.position -= 1
       @todo.save
-
     end
 
     redirect_to todos_path(anchor: "todo-#{@todo.id}")
-
     authorize @todo
   end
 
@@ -55,7 +53,6 @@ class TodosController < ApplicationController
     end
 
     redirect_to todos_path(anchor: "todo-#{@todo.id}")
-
     authorize @todo
   end
 
