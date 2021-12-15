@@ -9,8 +9,9 @@
         <div id=<%= todo.id %> class="todo">
           <h3><%= todo.title %></h3>
           <p><%= todo.description %></p>
-          <span>Due date: <%= todo.due_date.strftime("%A, %b %d") %></span>
-          <span>Position: <%= todo.position %></span>
+          <% unless todo.due_date.blank? %>
+            <span>Due date: <%= todo.due_date.strftime("%A, %b %d") %></span>
+          <% end %>
           <div class="call_to_actions">
             <div class="toggle_checkbox">  
               <%= link_to todo_check_path(todo), method: :patch do %>
@@ -41,7 +42,7 @@
     <h2>Add a new task</h2>
     <%= f.input :title %>
     <%= f.input :description %>
-    <%= f.input :due_date %>
+    <%= f.input :due_date, include_blank: true %>
     <%= f.submit "Add", class: 'btn btn-primary' %>
   <% end %>
 </div>
