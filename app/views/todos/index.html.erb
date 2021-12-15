@@ -3,13 +3,15 @@
 <% if @todos.blank? %>
   <p>You don't have any todo yet. Create your first task below.</p>
 <% else %>
-  <% @todos.each do |todo| %>
-    <div id=<%= todo.id %>>
-      <%= todo.title %>
-      <%= todo.description %>
-      <%= todo.due_date.strftime("%A, %b %d") %>
-    </div>
-  <% end %>
+  <div class="todos">
+    <% @todos.each do |todo| %>
+      <div id=<%= todo.id %> class="todo">
+        <h3><%= todo.title %></h3>
+        <p><%= todo.description %></p>
+        <span>Due date: <%= todo.due_date.strftime("%A, %b %d") %></span>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <hr>
