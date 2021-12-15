@@ -1,0 +1,23 @@
+<h1>My todo list</h1>
+
+<% if @todos.blank? %>
+  <p>You don't have any todo yet. Create your first task below.</p>
+<% else %>
+  <% @todos.each do |todo| %>
+    <div id=<%= todo.id %>>
+      <%= todo.title %>
+      <%= todo.description %>
+      <%= todo.due_date.strftime("%A, %b %d") %>
+    </div>
+  <% end %>
+<% end %>
+
+<hr>
+
+<%= simple_form_for(@todo, remote: true) do |f| %>
+  <h2>Add a new task</h2>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :due_date %>
+  <%= f.submit "Add", class: 'btn btn-primary' %>
+<% end %>

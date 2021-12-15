@@ -310,7 +310,7 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # Use devise without passwords
-  config.warden do |manager|
-    manager.default_strategies(:scope => :user).unshift :devise_no_pass
-  end
+  # config.warden do |manager|
+  #   manager.default_strategies(:scope => :user).unshift :devise_no_pass
+  # end
 end
